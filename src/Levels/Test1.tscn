@@ -1,0 +1,22 @@
+[gd_scene load_steps=3 format=3 uid="uid://k8fp8g8vpoyt"]
+
+[ext_resource type="PackedScene" uid="uid://cebxvr8ml8oqt" path="res://src/Player_Character/Player.tscn" id="1_6hali"]
+
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_q5v7b"]
+
+[node name="World" type="Node2D"]
+
+[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
+replication_config = SubResource("SceneReplicationConfig_q5v7b")
+
+[node name="Players" type="Node2D" parent="."]
+y_sort_enabled = true
+
+[node name="Player" parent="Players" instance=ExtResource("1_6hali")]
+position = Vector2(0, -2)
+
+[node name="Enemies" type="Node2D" parent="."]
+
+[node name="Projectiles" type="Node2D" parent="."]
+
+[node name="Map" type="Node2D" parent="."]
