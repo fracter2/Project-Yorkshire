@@ -8,6 +8,9 @@ radius = 32.0
 [node name="Player" type="CharacterBody2D"]
 motion_mode = 1
 script = ExtResource("1_r8qk7")
+speed = null
+speed_max = null
+drag = null
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_cq0qn")
@@ -15,5 +18,12 @@ shape = SubResource("CircleShape2D_cq0qn")
 [node name="Polygon2D" type="Polygon2D" parent="."]
 color = Color(0.2, 0.65098, 1, 1)
 polygon = PackedVector2Array(0, -32, -24, -24, -32, 0, -24, 24, 0, 32, 24, 24, 32, 0, 24, -24)
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position_smoothing_enabled = true
+drag_left_margin = 0.0
+drag_top_margin = 0.0
+drag_right_margin = 0.0
+drag_bottom_margin = 0.0
 
 [node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]

@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://k8fp8g8vpoyt"]
+[gd_scene load_steps=4 format=3 uid="uid://k8fp8g8vpoyt"]
 
 [ext_resource type="PackedScene" uid="uid://cebxvr8ml8oqt" path="res://src/Player_Character/Player.tscn" id="1_6hali"]
+[ext_resource type="PackedScene" uid="uid://cyh7q00nncadl" path="res://src/Map/Block.tscn" id="2_tssxa"]
 
 [sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_q5v7b"]
 
@@ -20,3 +21,33 @@ position = Vector2(0, -2)
 [node name="Projectiles" type="Node2D" parent="."]
 
 [node name="Map" type="Node2D" parent="."]
+
+[node name="Block" parent="Map" instance=ExtResource("2_tssxa")]
+position = Vector2(-224, -32)
+
+[node name="Block2" parent="Map" instance=ExtResource("2_tssxa")]
+position = Vector2(-224, -96)
+
+[node name="Block3" parent="Map" instance=ExtResource("2_tssxa")]
+position = Vector2(-224, 32)
+
+[node name="Block4" parent="Map" instance=ExtResource("2_tssxa")]
+position = Vector2(-224, 96)
+
+[node name="Block5" parent="Map" instance=ExtResource("2_tssxa")]
+position = Vector2(-160, -160)
+
+[node name="Block6" parent="Map" instance=ExtResource("2_tssxa")]
+position = Vector2(-96, -160)
+
+[node name="Block7" parent="Map" instance=ExtResource("2_tssxa")]
+position = Vector2(-32, -160)
+
+[node name="Block8" parent="Map" instance=ExtResource("2_tssxa")]
+position = Vector2(224, -96)
+
+[node name="Block9" parent="Map" instance=ExtResource("2_tssxa")]
+position = Vector2(224, -32)
+
+[node name="Block10" parent="Map" instance=ExtResource("2_tssxa")]
+position = Vector2(224, 32)
