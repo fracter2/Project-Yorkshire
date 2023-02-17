@@ -1,15 +1,9 @@
 extends CharacterBody2D
 
-@export var speed: float = 4000
-@export var speed_max: float = 6000
+@export var speed: float = 6000
+@export var speed_max: float = 32000
 @export var drag:float = 0.8
-#var vel:Vector2 = Vector2.ZERO
 
-enum CAMERA_STATE {
-	DEFAULT,
-	CENTERED,
-	CENTERED_ZOOMED
-}
 
 func _physics_process(delta):
 	var input_dir: Vector2 = Vector2.ZERO
@@ -22,10 +16,14 @@ func _physics_process(delta):
 	velocity.x = clamp(velocity.x, -speed_max, speed_max)
 	velocity.y = clamp(velocity.y, -speed_max, speed_max)
 	
+	
 	move_and_slide()
 
 
+func _process(delta):
+	# Implement a fix for movement jitter
+	pass
+	
 
-func camera_update(var STATE:int = 0):
-	if STATE == 1:
-			
+#func camera_update(var state:int = 0, var val:float = -1):
+#	pass
