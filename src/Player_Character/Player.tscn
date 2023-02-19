@@ -18,11 +18,13 @@ color = Color(0.2, 0.65098, 1, 1)
 polygon = PackedVector2Array(0, -32, -24, -24, -32, 0, -24, 24, 0, 32, 24, 24, 32, 0, 24, -24)
 
 [node name="Camera" type="Camera2D" parent="."]
+zoom = Vector2(1.5, 1.5)
 position_smoothing_enabled = true
 drag_left_margin = 0.0
 drag_top_margin = 0.0
 drag_right_margin = 0.0
 drag_bottom_margin = 0.0
 script = ExtResource("2_a8mqb")
+camera_speed = 64.0
 
 [node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
