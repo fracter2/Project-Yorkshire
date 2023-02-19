@@ -1,0 +1,75 @@
+[gd_scene load_steps=5 format=3 uid="uid://bqlbcx8rt2n3m"]
+
+[ext_resource type="Script" path="res://src/Menus/Scripts/Pause_Menu.gd" id="1_llemw"]
+
+[sub_resource type="Gradient" id="Gradient_m8cgk"]
+colors = PackedColorArray(0, 0.364706, 0.498039, 0.235294, 0.658824, 0.635294, 0.996078, 0.235294)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_0hkpr"]
+gradient = SubResource("Gradient_m8cgk")
+fill_to = Vector2(1, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ks4sf"]
+texture = SubResource("GradientTexture2D_0hkpr")
+
+[node name="Pause_Menu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_llemw")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Panel" type="Panel" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_ks4sf")
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 40
+theme_override_constants/margin_top = 40
+theme_override_constants/margin_right = 40
+theme_override_constants/margin_bottom = 40
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/MarginContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/MarginContainer/HBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="Resume" type="Button" parent="CanvasLayer/MarginContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "Resume"
+
+[node name="Options" type="Button" parent="CanvasLayer/MarginContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "Options
+"
+
+[node name="Main Menu" type="Button" parent="CanvasLayer/MarginContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "Main Menu
+"
+
+[node name="Quit" type="Button" parent="CanvasLayer/MarginContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "Quit
+"
+
+[connection signal="button_down" from="CanvasLayer/MarginContainer/HBoxContainer/VBoxContainer/Resume" to="." method="_on_resume_button_down"]
+[connection signal="button_down" from="CanvasLayer/MarginContainer/HBoxContainer/VBoxContainer/Options" to="." method="_on_options_button_down"]
+[connection signal="button_down" from="CanvasLayer/MarginContainer/HBoxContainer/VBoxContainer/Main Menu" to="." method="_on_main_menu_button_down"]
+[connection signal="button_down" from="CanvasLayer/MarginContainer/HBoxContainer/VBoxContainer/Quit" to="." method="_on_quit_button_down"]
