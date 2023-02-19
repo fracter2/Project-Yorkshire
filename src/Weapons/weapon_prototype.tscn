@@ -1,0 +1,23 @@
+[gd_scene load_steps=3 format=3 uid="uid://dnorgtdyhkcyt"]
+
+[ext_resource type="Script" path="res://src/Weapons/Scripts/weapon_prototype.gd" id="1_we5cb"]
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_pvjbf"]
+b = Vector2(0, 2)
+
+[node name="Weapon" type="StaticBody2D"]
+script = ExtResource("1_we5cb")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+scale = Vector2(0.3, 1)
+shape = SubResource("SegmentShape2D_pvjbf")
+disabled = true
+
+[node name="Polygon2D" type="Polygon2D" parent="."]
+position = Vector2(1, 2)
+rotation = 3.14159
+color = Color(0.988235, 0, 0.713726, 1)
+polygon = PackedVector2Array(0, 0, 3, 1, 0, 2, 1, 1)
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(9, 9)
