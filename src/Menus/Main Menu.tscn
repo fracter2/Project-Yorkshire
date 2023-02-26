@@ -37,7 +37,8 @@ script/source = "extends Button
 
 
 func _on_button_down():
-	get_tree().change_scene_to_file(\"res://src/Levels/Test1.tscn\")
+	# This is temporary. Later, make this go to a level select
+	get_tree().change_scene_to_file(\"res://src/Levels/Test1.tscn\")	
 	PauseMenu.in_main_menu = false
 	
 "

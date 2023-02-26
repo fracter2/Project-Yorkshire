@@ -25,6 +25,5 @@ drag_top_margin = 0.0
 drag_right_margin = 0.0
 drag_bottom_margin = 0.0
 script = ExtResource("2_a8mqb")
-camera_speed = 64.0
 
 [node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
