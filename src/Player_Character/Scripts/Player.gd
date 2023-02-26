@@ -10,6 +10,10 @@ var input_dir := Vector2.ZERO
 @onready var prev_global_pos2 := Vector2.ZERO
 var custom_velocity := Vector2.ZERO
 
+var screen_shake: float = 0
+var screen_shake_ko:float = 1
+var screen_shake_reduce:float = 1
+
 
 
 func _physics_process(delta):
