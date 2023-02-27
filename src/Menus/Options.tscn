@@ -1,0 +1,134 @@
+[gd_scene load_steps=3 format=3 uid="uid://5u2xc00abggt"]
+
+[sub_resource type="GDScript" id="GDScript_pn421"]
+resource_name = "OptionsScript"
+script/source = "extends MarginContainer
+
+
+func _on_back_button_down():
+	queue_free()
+"
+
+[sub_resource type="GDScript" id="GDScript_fabo7"]
+resource_name = "OptionsAreaScript"
+script/source = "extends MarginContainer
+
+var controls = preload(\"res://src/Menus/Options_Controls.tscn\")
+var graphics = preload(\"res://src/Menus/Options_Graphics.tscn\")
+var audio = preload(\"res://src/Menus/Options_Audio.tscn\")
+
+
+
+func update_area(type:String):
+	get_child(0).queue_free()
+	
+	if type == \"controls\": add_child(controls.instantiate())
+	elif type == \"graphics\": add_child(graphics.instantiate())
+	elif type == \"audio\": add_child(audio.instantiate())
+	
+"
+
+[node name="Options" type="MarginContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 300
+theme_override_constants/margin_top = 200
+theme_override_constants/margin_right = 300
+theme_override_constants/margin_bottom = 200
+script = SubResource("GDScript_pn421")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="Panel" type="Panel" parent="HBoxContainer"]
+custom_minimum_size = Vector2(240, 0)
+layout_mode = 2
+
+[node name="Left_Column" type="VBoxContainer" parent="HBoxContainer/Panel"]
+layout_mode = 1
+anchors_preset = 9
+anchor_bottom = 1.0
+offset_right = 240.0
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer/Panel/Left_Column"]
+layout_mode = 2
+theme_override_constants/margin_left = 40
+theme_override_constants/margin_top = 40
+theme_override_constants/margin_right = 40
+theme_override_constants/margin_bottom = 40
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/Panel/Left_Column/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="Controls" type="Button" parent="HBoxContainer/Panel/Left_Column/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(120, 40)
+layout_mode = 2
+theme_override_font_sizes/font_size = 18
+text = "Controls"
+
+[node name="Graphics" type="Button" parent="HBoxContainer/Panel/Left_Column/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(120, 40)
+layout_mode = 2
+theme_override_font_sizes/font_size = 18
+text = "Graphics
+"
+
+[node name="Audio" type="Button" parent="HBoxContainer/Panel/Left_Column/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(120, 40)
+layout_mode = 2
+theme_override_font_sizes/font_size = 18
+text = "Audio
+"
+
+[node name="MarginContainer2" type="MarginContainer" parent="HBoxContainer/Panel/Left_Column"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/margin_left = 40
+theme_override_constants/margin_top = 40
+theme_override_constants/margin_right = 40
+theme_override_constants/margin_bottom = 40
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/Panel/Left_Column/MarginContainer2"]
+layout_mode = 2
+alignment = 2
+
+[node name="Back" type="Button" parent="HBoxContainer/Panel/Left_Column/MarginContainer2/VBoxContainer"]
+custom_minimum_size = Vector2(120, 40)
+layout_mode = 2
+theme_override_font_sizes/font_size = 18
+text = "Back"
+
+[node name="Panel2" type="Panel" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 4.0
+
+[node name="Options_Area" type="MarginContainer" parent="HBoxContainer/Panel2"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+script = SubResource("GDScript_fabo7")
+
+[node name="Temporary_Panel" type="Panel" parent="HBoxContainer/Panel2/Options_Area"]
+editor_description = "This gets deleted at runtime. It is for refrence in the editor."
+layout_mode = 2
+
+[connection signal="button_down" from="HBoxContainer/Panel/Left_Column/MarginContainer/VBoxContainer/Controls" to="HBoxContainer/Panel2/Options_Area" method="update_area" binds= ["controls"]]
+[connection signal="button_down" from="HBoxContainer/Panel/Left_Column/MarginContainer/VBoxContainer/Graphics" to="HBoxContainer/Panel2/Options_Area" method="update_area" binds= ["graphics"]]
+[connection signal="button_down" from="HBoxContainer/Panel/Left_Column/MarginContainer/VBoxContainer/Audio" to="HBoxContainer/Panel2/Options_Area" method="update_area" binds= ["audio"]]
+[connection signal="button_down" from="HBoxContainer/Panel/Left_Column/MarginContainer2/VBoxContainer/Back" to="." method="_on_back_button_down"]

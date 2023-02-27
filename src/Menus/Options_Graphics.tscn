@@ -1,0 +1,40 @@
+[gd_scene load_steps=3 format=3 uid="uid://bemectp3xdtjp"]
+
+[sub_resource type="InputEventKey" id="InputEventKey_1b0p8"]
+device = -1
+key_label = 70
+unicode = 102
+
+[sub_resource type="Shortcut" id="Shortcut_mr3tj"]
+events = [SubResource("InputEventKey_1b0p8")]
+
+[node name="Options_Graphics" type="MarginContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -884.0
+offset_bottom = -440.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="List" type="VBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="CheckButton" type="CheckButton" parent="List"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 18
+text = "hello aswell"
+
+[node name="Fullscreen" type="CheckBox" parent="List"]
+layout_mode = 2
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_constants/h_separation = 2
+theme_override_constants/check_v_offset = 0
+theme_override_font_sizes/font_size = 18
+shortcut = SubResource("Shortcut_mr3tj")
+text = "Hello
+"

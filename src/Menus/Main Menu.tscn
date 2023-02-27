@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://duh4xfo3gksyo"]
+[gd_scene load_steps=8 format=3 uid="uid://duh4xfo3gksyo"]
 
 [sub_resource type="Gradient" id="Gradient_nbmwd"]
 colors = PackedColorArray(0.533776, 0.0472426, 0.383487, 1, 0.123578, 0.289845, 0.331728, 1)
@@ -43,6 +43,19 @@ func _on_button_down():
 	
 "
 
+[sub_resource type="GDScript" id="GDScript_07x72"]
+resource_name = "BtnOptionsScript"
+script/source = "extends Button
+
+var options_scene = preload(\"res://src/Menus/Options.tscn\")
+
+
+func _on_button_down():
+	var instance = options_scene.instantiate()
+	$\"/root/MainMenu\".add_child(instance)
+	
+"
+
 [sub_resource type="GDScript" id="GDScript_h1wkt"]
 resource_name = "BtnQuitScript"
 script/source = "extends Button
@@ -55,7 +68,7 @@ func _on_button_down():
 	get_tree().quit()
 "
 
-[node name="Main Menu" type="Panel"]
+[node name="MainMenu" type="Panel"]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -102,6 +115,7 @@ text = "Host Multiplayer"
 layout_mode = 2
 text = "Options
 "
+script = SubResource("GDScript_07x72")
 
 [node name="Quit" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer"]
 layout_mode = 2
@@ -110,4 +124,5 @@ text = "Quit
 script = SubResource("GDScript_h1wkt")
 
 [connection signal="button_down" from="MarginContainer/HBoxContainer/VBoxContainer/Singleplayer" to="MarginContainer/HBoxContainer/VBoxContainer/Singleplayer" method="_on_button_down"]
+[connection signal="button_down" from="MarginContainer/HBoxContainer/VBoxContainer/Options" to="MarginContainer/HBoxContainer/VBoxContainer/Options" method="_on_button_down"]
 [connection signal="button_down" from="MarginContainer/HBoxContainer/VBoxContainer/Quit" to="MarginContainer/HBoxContainer/VBoxContainer/Quit" method="_on_button_down"]
