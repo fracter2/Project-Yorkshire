@@ -34,7 +34,3 @@ func _physics_process(delta):
 
 func _process(delta):
 	Visuals.global_position = prev_global_pos.lerp(global_position, Engine.get_physics_interpolation_fraction())
-	print(prev_global_pos)
-	print(global_position)
-	print(Visuals.global_position)
-	print(Engine.get_physics_interpolation_fraction())
