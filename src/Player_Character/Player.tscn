@@ -25,7 +25,7 @@ script = ExtResource("2_a8mqb")
 
 [node name="Visuals" type="Node2D" parent="."]
 
-[node name="Visualsss" type="Polygon2D" parent="Visuals"]
+[node name="Body" type="Polygon2D" parent="Visuals"]
 color = Color(0.2, 0.65098, 1, 1)
 antialiased = true
 polygon = PackedVector2Array(0, -32, -24, -24, -32, 0, -24, 24, 0, 32, 24, 24, 32, 0, 24, -24)
