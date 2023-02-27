@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://5u2xc00abggt"]
+[gd_scene load_steps=6 format=3 uid="uid://5u2xc00abggt"]
 
 [ext_resource type="PackedScene" uid="uid://bemectp3xdtjp" path="res://src/Menus/Options_Graphics.tscn" id="1_s7jda"]
 
@@ -10,6 +10,13 @@ script/source = "extends MarginContainer
 func _on_back_button_down():
 	queue_free()
 "
+
+[sub_resource type="InputEventKey" id="InputEventKey_owiw8"]
+device = -1
+physical_keycode = 4194305
+
+[sub_resource type="Shortcut" id="Shortcut_6rdtf"]
+events = [SubResource("InputEventKey_owiw8")]
 
 [sub_resource type="GDScript" id="GDScript_fabo7"]
 resource_name = "OptionsAreaScript"
@@ -50,10 +57,11 @@ script = SubResource("GDScript_pn421")
 layout_mode = 2
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
+custom_minimum_size = Vector2(720, 200)
 layout_mode = 2
 
 [node name="Panel" type="Panel" parent="HBoxContainer"]
-custom_minimum_size = Vector2(240, 0)
+custom_minimum_size = Vector2(240, 240)
 layout_mode = 2
 
 [node name="Left_Column" type="VBoxContainer" parent="HBoxContainer/Panel"]
@@ -110,6 +118,7 @@ alignment = 2
 custom_minimum_size = Vector2(120, 40)
 layout_mode = 2
 theme_override_font_sizes/font_size = 18
+shortcut = SubResource("Shortcut_6rdtf")
 text = "Back"
 
 [node name="Panel2" type="Panel" parent="HBoxContainer"]

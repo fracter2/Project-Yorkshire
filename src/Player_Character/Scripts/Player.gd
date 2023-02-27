@@ -5,7 +5,7 @@ extends CharacterBody2D
 @export var drag:float = 0.8
 var input_dir := Vector2.ZERO
 
-@onready var Visuals := $Polygon2D
+@onready var Visuals := $Visuals
 @onready var prev_global_pos := Vector2.ZERO
 @onready var prev_global_pos2 := Vector2.ZERO
 var custom_velocity := Vector2.ZERO
@@ -34,3 +34,7 @@ func _physics_process(delta):
 
 func _process(delta):
 	Visuals.global_position = prev_global_pos.lerp(global_position, Engine.get_physics_interpolation_fraction())
+	print(prev_global_pos)
+	print(global_position)
+	print(Visuals.global_position)
+	print(Engine.get_physics_interpolation_fraction())

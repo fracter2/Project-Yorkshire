@@ -17,11 +17,20 @@ texture = SubResource("GradientTexture2D_7ug2p")
 [sub_resource type="GDScript" id="GDScript_k040v"]
 resource_name = "MainMenuScript"
 script/source = "extends Panel
-
+@onready var system_style:StyleBoxTexture = preload(\"res://src/Menus/Main Menu.tscn::StyleBoxTexture_c6fuk\")
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	PauseMenu.in_main_menu = true
+	Window.new()
+	get_window().min_size = Vector2i(640,640)
+	
+	
+	
+	
+	system_style.texture.gradient.colors[0] = DisplayServer.get_accent_color()
+	system_style.texture.gradient.colors[1] = DisplayServer.get_accent_color().inverted().darkened(0.6)
+	add_theme_stylebox_override(\"System Accent Color\", system_style)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -84,10 +93,10 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/margin_left = 20
-theme_override_constants/margin_top = 20
-theme_override_constants/margin_right = 20
-theme_override_constants/margin_bottom = 20
+theme_override_constants/margin_left = 60
+theme_override_constants/margin_top = 60
+theme_override_constants/margin_right = 60
+theme_override_constants/margin_bottom = 60
 
 [node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
 layout_mode = 2

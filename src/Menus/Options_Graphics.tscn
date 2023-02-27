@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://src/Menus/Scripts/Options_Graphics.gd" id="1_friuo"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_02qbj"]
-bg_color = Color(0.145098, 0.14902, 0.160784, 1)
+bg_color = Color(0.145098, 0.14902, 0.160784, 0.72549)
 
 [sub_resource type="InputEventKey" id="InputEventKey_1b0p8"]
 device = -1
@@ -34,17 +34,17 @@ theme_override_constants/margin_bottom = 30
 [node name="List" type="VBoxContainer" parent="Options_Graphics"]
 layout_mode = 2
 
-[node name="Fullscreen" type="CheckBox" parent="Options_Graphics/List"]
+[node name="Screen Mode" type="HBoxContainer" parent="Options_Graphics/List"]
 layout_mode = 2
-theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
-theme_override_constants/h_separation = 2
-theme_override_constants/check_v_offset = 0
-theme_override_font_sizes/font_size = 18
-shortcut = SubResource("Shortcut_mr3tj")
-text = "Fullscreen
-"
+theme_override_constants/separation = 8
 
-[node name="Fullscreen_Modes" type="OptionButton" parent="Options_Graphics/List"]
+[node name="Label" type="Label" parent="Options_Graphics/List/Screen Mode"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 18
+text = "Screen Mode"
+
+[node name="Fullscreen_Modes" type="OptionButton" parent="Options_Graphics/List/Screen Mode"]
 layout_mode = 2
 item_count = 5
 selected = 4
@@ -59,4 +59,14 @@ popup/item_3/id = 3
 popup/item_4/text = "Fullscreen Exclusive"
 popup/item_4/id = 4
 
-[connection signal="item_selected" from="Options_Graphics/List/Fullscreen_Modes" to="." method="_on_fullscreen_modes_item_selected"]
+[node name="Fullscreen" type="CheckBox" parent="Options_Graphics/List"]
+layout_mode = 2
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_constants/h_separation = 2
+theme_override_constants/check_v_offset = 0
+theme_override_font_sizes/font_size = 18
+shortcut = SubResource("Shortcut_mr3tj")
+text = "Good Day
+"
+
+[connection signal="item_selected" from="Options_Graphics/List/Screen Mode/Fullscreen_Modes" to="." method="_on_fullscreen_modes_item_selected"]

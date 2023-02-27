@@ -9,5 +9,8 @@ func _ready():
 	
 
 func _on_fullscreen_modes_item_selected(index):
-	DisplayServer.window_set_mode(index)
 	# This relies ont he fact that the Indexes match with the DisplayServer Window Modes enum
+	DisplayServer.window_set_mode(index)
+	DisplayServer.clipboard_get()
+	
+	#DisplayServer.border

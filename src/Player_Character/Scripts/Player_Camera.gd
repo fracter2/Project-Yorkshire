@@ -11,8 +11,8 @@ var target_pos:Vector2 = Vector2.ZERO
 
 
 func _process(delta):
-	target_pos = get_local_mouse_position() * displacement * displacement_ko
-	position = lerp(position, target_pos, speed * speed * speed_ko)
-
+	target_pos = (get_global_mouse_position() - get_screen_center_position()) * displacement
+	position =  lerp(position, target_pos, speed * speed * speed_ko)
+	pass
 
 
