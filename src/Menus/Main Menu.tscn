@@ -120,6 +120,11 @@ text = "Join Multiplayer
 layout_mode = 2
 text = "Host Multiplayer"
 
+[node name="Manual" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "Manual
+"
+
 [node name="Options" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer"]
 layout_mode = 2
 text = "Options

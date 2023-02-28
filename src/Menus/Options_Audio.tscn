@@ -1,9 +1,167 @@
-[gd_scene format=3 uid="uid://do7sy5ompop4e"]
+[gd_scene load_steps=5 format=3 uid="uid://do7sy5ompop4e"]
 
-[node name="Options_Audio" type="Control"]
-layout_mode = 3
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hfi7n"]
+bg_color = Color(0.156863, 0.145098, 0.156863, 0.866667)
+border_width_left = 12
+border_width_top = 12
+border_width_right = 12
+border_width_bottom = 12
+border_color = Color(0.258824, 0.207843, 0.286275, 0.866667)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="GDScript" id="GDScript_oivee"]
+resource_name = "MasterVolScript"
+script/source = "extends HBoxContainer
+
+func _ready():
+	# Later make this adapt to users previous settings
+	pass
+	
+
+
+func _on_slider_value_changed(value:float):
+	$Value.text = var_to_str(round(value*10) * 0.1)
+"
+
+[sub_resource type="GDScript" id="GDScript_l22ln"]
+resource_name = "EffectsVolumeScript"
+script/source = "extends HBoxContainer
+
+
+func _ready():
+	pass # Replace with function body.
+
+
+
+func _on_slider_value_changed(value):
+	$Value.text = var_to_str(round(value*10) * 0.1)
+"
+
+[sub_resource type="GDScript" id="GDScript_peu8t"]
+resource_name = "MusicVolumeScript"
+script/source = "extends HBoxContainer
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	pass # Replace with function body.
+
+
+
+func _on_slider_value_changed(value):
+	$Value.text = var_to_str(round(value*10) * 0.1)
+"
+
+[node name="Options_Audio" type="Panel"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -884.0
+offset_bottom = -440.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_hfi7n")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_constants/margin_left = 30
+theme_override_constants/margin_top = 30
+theme_override_constants/margin_right = 30
+theme_override_constants/margin_bottom = 30
+
+[node name="List" type="VBoxContainer" parent="MarginContainer"]
+custom_minimum_size = Vector2(400, 120)
+layout_mode = 2
+
+[node name="Master Volume" type="HBoxContainer" parent="MarginContainer/List"]
+layout_mode = 2
+theme_override_constants/separation = 0
+script = SubResource("GDScript_oivee")
+
+[node name="Label" type="Label" parent="MarginContainer/List/Master Volume"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 18
+text = "Master Volume "
+
+[node name="Slider" type="HSlider" parent="MarginContainer/List/Master Volume"]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+size_flags_vertical = 1
+max_value = 200.0
+step = 0.2
+value = 100.0
+tick_count = 10
+ticks_on_borders = true
+
+[node name="Value" type="Label" parent="MarginContainer/List/Master Volume"]
+custom_minimum_size = Vector2(80, 0)
+layout_mode = 2
+text = "100"
+horizontal_alignment = 1
+
+[node name="Effects Volume" type="HBoxContainer" parent="MarginContainer/List"]
+layout_mode = 2
+theme_override_constants/separation = 0
+script = SubResource("GDScript_l22ln")
+
+[node name="Label" type="Label" parent="MarginContainer/List/Effects Volume"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 18
+text = "Effects Volume "
+
+[node name="Slider" type="HSlider" parent="MarginContainer/List/Effects Volume"]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+size_flags_vertical = 1
+max_value = 200.0
+step = 0.2
+value = 100.0
+tick_count = 10
+ticks_on_borders = true
+
+[node name="Value" type="Label" parent="MarginContainer/List/Effects Volume"]
+custom_minimum_size = Vector2(80, 0)
+layout_mode = 2
+text = "100"
+horizontal_alignment = 1
+
+[node name="Music Volume" type="HBoxContainer" parent="MarginContainer/List"]
+layout_mode = 2
+theme_override_constants/separation = 0
+script = SubResource("GDScript_peu8t")
+
+[node name="Label" type="Label" parent="MarginContainer/List/Music Volume"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 18
+text = "Music Volume "
+
+[node name="Slider" type="HSlider" parent="MarginContainer/List/Music Volume"]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+size_flags_vertical = 1
+max_value = 200.0
+step = 0.2
+value = 100.0
+tick_count = 10
+ticks_on_borders = true
+
+[node name="Value" type="Label" parent="MarginContainer/List/Music Volume"]
+custom_minimum_size = Vector2(80, 0)
+layout_mode = 2
+text = "100"
+horizontal_alignment = 1
+
+[connection signal="value_changed" from="MarginContainer/List/Master Volume/Slider" to="MarginContainer/List/Master Volume" method="_on_slider_value_changed"]
+[connection signal="value_changed" from="MarginContainer/List/Effects Volume/Slider" to="MarginContainer/List/Effects Volume" method="_on_slider_value_changed"]
+[connection signal="value_changed" from="MarginContainer/List/Music Volume/Slider" to="MarginContainer/List/Music Volume" method="_on_slider_value_changed"]
