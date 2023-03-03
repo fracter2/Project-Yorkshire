@@ -54,7 +54,28 @@ theme_override_constants/separation = 0
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_font_sizes/font_size = 18
-text = "There are no controll options :)"
+text = "Nothing Functions Yet..."
+
+[node name="Sensitivity" type="HBoxContainer" parent="MarginContainer/List"]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="Label" type="Label" parent="MarginContainer/List/Sensitivity"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 18
+text = "Aim Sensitivity?
+"
+
+[node name="Slider" type="HSlider" parent="MarginContainer/List/Sensitivity"]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+size_flags_vertical = 1
+max_value = 200.0
+step = 0.2
+value = 100.0
+tick_count = 10
+ticks_on_borders = true
 
 [node name="Fullscreen" type="CheckBox" parent="MarginContainer/List"]
 layout_mode = 2
