@@ -9,10 +9,8 @@ func _input(event):
 		if not in_pause_menu:
 			# get IN pause menu
 			var pause_menu_instance = pause_menu.instantiate()
-			$"/root/World".add_child(pause_menu_instance)
-			in_pause_menu = true
-		else: 
-			# Get out of pause menu
-			# Be handled by the pause_menu scene? YES
-			pass
 			
+			if not get_node_or_null("/root//World") == null:
+				$"/root/World".add_child(pause_menu_instance)
+				in_pause_menu = true
+			else: print("Pause menu cannot find /root//World node")
