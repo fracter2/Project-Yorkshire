@@ -1,9 +1,153 @@
-[gd_scene format=3 uid="uid://duh4xfo3gksyo"]
+[gd_scene load_steps=9 format=3 uid="uid://duh4xfo3gksyo"]
 
-[node name="Main Menu" type="Control"]
-layout_mode = 3
+[sub_resource type="Gradient" id="Gradient_nbmwd"]
+colors = PackedColorArray(0.533776, 0.0472426, 0.383487, 1, 0.123578, 0.289845, 0.331728, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_7ug2p"]
+gradient = SubResource("Gradient_nbmwd")
+width = 128
+height = 128
+fill = 1
+fill_from = Vector2(0, 0.0107914)
+fill_to = Vector2(1, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_c6fuk"]
+texture = SubResource("GradientTexture2D_7ug2p")
+
+[sub_resource type="GDScript" id="GDScript_k040v"]
+resource_name = "MainMenuScript"
+script/source = "extends Panel
+@onready var system_style:StyleBoxTexture = preload(\"res://src/Menus/Main Menu.tscn::StyleBoxTexture_c6fuk\")
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	PauseMenu.in_main_menu = true
+	Window.new()
+	get_window().min_size = Vector2i(640,640)
+	
+	
+	
+	
+	system_style.texture.gradient.colors[0] = DisplayServer.get_accent_color()
+	system_style.texture.gradient.colors[1] = DisplayServer.get_accent_color().inverted().darkened(0.6)
+	add_theme_stylebox_override(\"System Accent Color\", system_style)
+
+
+"
+
+[sub_resource type="GDScript" id="GDScript_r2mm0"]
+resource_name = "BtnSingleplayerScript"
+script/source = "extends Button
+
+
+
+
+func _on_button_down():
+	# This is temporary. Later, make this go to a level select
+	get_tree().change_scene_to_file(\"res://src/Levels/Test1.tscn\")	
+	PauseMenu.in_main_menu = false
+	
+"
+
+[sub_resource type="GDScript" id="GDScript_tyayy"]
+resource_name = "BtnManualScript"
+script/source = "extends Button
+
+var manual_scene = preload(\"res://src/Menus/Manual/Manual.tscn\")
+
+
+func _on_button_down():
+	var instance = manual_scene.instantiate()
+	$\"/root/MainMenu\".add_child(instance)
+"
+
+[sub_resource type="GDScript" id="GDScript_07x72"]
+resource_name = "BtnOptionsScript"
+script/source = "extends Button
+
+var options_scene = preload(\"res://src/Menus/Options/Options.tscn\")
+
+
+func _on_button_down():
+	var instance = options_scene.instantiate()
+	$\"/root/MainMenu\".add_child(instance)
+	
+"
+
+[sub_resource type="GDScript" id="GDScript_h1wkt"]
+resource_name = "BtnQuitScript"
+script/source = "extends Button
+
+
+
+
+
+func _on_button_down():
+	get_tree().quit()
+"
+
+[node name="MainMenu" type="Panel"]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_c6fuk")
+script = SubResource("GDScript_k040v")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 60
+theme_override_constants/margin_top = 60
+theme_override_constants/margin_right = 60
+theme_override_constants/margin_bottom = 60
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="Singleplayer" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "Singleplayer
+"
+script = SubResource("GDScript_r2mm0")
+
+[node name="Multi Join" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "Join Multiplayer
+"
+
+[node name="Multi Host" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "Host Multiplayer"
+
+[node name="Manual" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "Manual
+"
+script = SubResource("GDScript_tyayy")
+
+[node name="Options" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "Options
+"
+script = SubResource("GDScript_07x72")
+
+[node name="Quit" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "Quit
+"
+script = SubResource("GDScript_h1wkt")
+
+[connection signal="button_down" from="MarginContainer/HBoxContainer/VBoxContainer/Singleplayer" to="MarginContainer/HBoxContainer/VBoxContainer/Singleplayer" method="_on_button_down"]
+[connection signal="button_down" from="MarginContainer/HBoxContainer/VBoxContainer/Manual" to="MarginContainer/HBoxContainer/VBoxContainer/Manual" method="_on_button_down"]
+[connection signal="button_down" from="MarginContainer/HBoxContainer/VBoxContainer/Options" to="MarginContainer/HBoxContainer/VBoxContainer/Options" method="_on_button_down"]
+[connection signal="button_down" from="MarginContainer/HBoxContainer/VBoxContainer/Quit" to="MarginContainer/HBoxContainer/VBoxContainer/Quit" method="_on_button_down"]
