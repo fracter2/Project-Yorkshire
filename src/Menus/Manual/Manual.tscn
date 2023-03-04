@@ -1,0 +1,112 @@
+[gd_scene load_steps=4 format=3 uid="uid://dtqaakgm13v2i"]
+
+[ext_resource type="Script" path="res://src/Menus/Manual/Scripts/Manual.gd" id="1_qafov"]
+
+[sub_resource type="InputEventKey" id="InputEventKey_owiw8"]
+device = -1
+physical_keycode = 4194305
+
+[sub_resource type="Shortcut" id="Shortcut_llb1k"]
+events = [SubResource("InputEventKey_owiw8")]
+
+[node name="Manual" type="MarginContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 200
+theme_override_constants/margin_top = 150
+theme_override_constants/margin_right = 200
+theme_override_constants/margin_bottom = 150
+script = ExtResource("1_qafov")
+
+[node name="Panel" type="Panel" parent="."]
+custom_minimum_size = Vector2(720, 240)
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+custom_minimum_size = Vector2(720, 344)
+layout_mode = 2
+
+[node name="Left_Column" type="Panel" parent="HBoxContainer"]
+custom_minimum_size = Vector2(240, 344)
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/Left_Column"]
+layout_mode = 1
+anchors_preset = 9
+anchor_bottom = 1.0
+offset_right = 240.0
+grow_vertical = 2
+
+[node name="Categories" type="MarginContainer" parent="HBoxContainer/Left_Column/VBoxContainer"]
+custom_minimum_size = Vector2(180, 224)
+layout_mode = 2
+theme_override_constants/margin_left = 40
+theme_override_constants/margin_top = 40
+theme_override_constants/margin_right = 40
+theme_override_constants/margin_bottom = 40
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/Left_Column/VBoxContainer/Categories"]
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="Maps" type="Button" parent="HBoxContainer/Left_Column/VBoxContainer/Categories/VBoxContainer"]
+custom_minimum_size = Vector2(120, 40)
+layout_mode = 2
+theme_override_font_sizes/font_size = 18
+text = "Maps"
+
+[node name="Weapons" type="Button" parent="HBoxContainer/Left_Column/VBoxContainer/Categories/VBoxContainer"]
+custom_minimum_size = Vector2(120, 40)
+layout_mode = 2
+theme_override_font_sizes/font_size = 18
+text = "Weapons
+"
+
+[node name="Enemies" type="Button" parent="HBoxContainer/Left_Column/VBoxContainer/Categories/VBoxContainer"]
+custom_minimum_size = Vector2(120, 40)
+layout_mode = 2
+theme_override_font_sizes/font_size = 18
+text = "Enemies
+"
+
+[node name="Bottom_Actions" type="MarginContainer" parent="HBoxContainer/Left_Column/VBoxContainer"]
+custom_minimum_size = Vector2(180, 120)
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/margin_left = 40
+theme_override_constants/margin_top = 40
+theme_override_constants/margin_right = 40
+theme_override_constants/margin_bottom = 40
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/Left_Column/VBoxContainer/Bottom_Actions"]
+layout_mode = 2
+alignment = 2
+
+[node name="Back" type="Button" parent="HBoxContainer/Left_Column/VBoxContainer/Bottom_Actions/VBoxContainer"]
+custom_minimum_size = Vector2(120, 40)
+layout_mode = 2
+theme_override_font_sizes/font_size = 18
+shortcut = SubResource("Shortcut_llb1k")
+text = "Back"
+
+[node name="Fill_Side" type="Panel" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 4.0
+
+[node name="Options_Area" type="MarginContainer" parent="HBoxContainer/Fill_Side"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 25
+theme_override_constants/margin_top = 25
+theme_override_constants/margin_right = 25
+theme_override_constants/margin_bottom = 25
+
+[connection signal="button_down" from="HBoxContainer/Left_Column/VBoxContainer/Bottom_Actions/VBoxContainer/Back" to="." method="_on_back_button_down"]

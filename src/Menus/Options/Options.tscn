@@ -1,15 +1,8 @@
 [gd_scene load_steps=6 format=3 uid="uid://5u2xc00abggt"]
 
-[ext_resource type="PackedScene" uid="uid://bemectp3xdtjp" path="res://src/Menus/Options_Graphics.tscn" id="1_s7jda"]
-
-[sub_resource type="GDScript" id="GDScript_pn421"]
-resource_name = "OptionsScript"
-script/source = "extends MarginContainer
-
-
-func _on_back_button_down():
-	queue_free()
-"
+[ext_resource type="Script" path="res://src/Menus/Options/Scripts/OptionsScript.gd" id="1_5og5o"]
+[ext_resource type="Script" path="res://src/Menus/Options/Scripts/OptionsAreaScript.gd" id="2_bgra1"]
+[ext_resource type="PackedScene" uid="uid://bemectp3xdtjp" path="res://src/Menus/Options/Options_Graphics.tscn" id="3_88php"]
 
 [sub_resource type="InputEventKey" id="InputEventKey_owiw8"]
 device = -1
@@ -18,26 +11,7 @@ physical_keycode = 4194305
 [sub_resource type="Shortcut" id="Shortcut_6rdtf"]
 events = [SubResource("InputEventKey_owiw8")]
 
-[sub_resource type="GDScript" id="GDScript_fabo7"]
-resource_name = "OptionsAreaScript"
-script/source = "extends MarginContainer
-
-var controls = preload(\"res://src/Menus/Options_Controls.tscn\")
-var graphics = preload(\"res://src/Menus/Options_Graphics.tscn\")
-var audio = preload(\"res://src/Menus/Options_Audio.tscn\")
-
-
-
-func update_area(type:String):
-	get_child(0).queue_free()
-	
-	if type == \"controls\": add_child(controls.instantiate())
-	elif type == \"graphics\": add_child(graphics.instantiate())
-	elif type == \"audio\": add_child(audio.instantiate())
-	
-"
-
-[node name="Options" type="MarginContainer"]
+[node name="Options_Panel" type="MarginContainer"]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -51,7 +25,7 @@ theme_override_constants/margin_left = 300
 theme_override_constants/margin_top = 200
 theme_override_constants/margin_right = 300
 theme_override_constants/margin_bottom = 200
-script = SubResource("GDScript_pn421")
+script = ExtResource("1_5og5o")
 
 [node name="Panel" type="Panel" parent="."]
 custom_minimum_size = Vector2(720, 240)
@@ -140,9 +114,9 @@ theme_override_constants/margin_left = 25
 theme_override_constants/margin_top = 25
 theme_override_constants/margin_right = 25
 theme_override_constants/margin_bottom = 25
-script = SubResource("GDScript_fabo7")
+script = ExtResource("2_bgra1")
 
-[node name="Options_Graphics" parent="HBoxContainer/Fill_Side/Options_Area" instance=ExtResource("1_s7jda")]
+[node name="Options_Graphics" parent="HBoxContainer/Fill_Side/Options_Area" instance=ExtResource("3_88php")]
 layout_mode = 2
 
 [connection signal="button_down" from="HBoxContainer/Left_Column/VBoxContainer/Categories/VBoxContainer/Controls" to="HBoxContainer/Fill_Side/Options_Area" method="update_area" binds= ["controls"]]

@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://bemectp3xdtjp"]
 
-[ext_resource type="Script" path="res://src/Menus/Scripts/Options_Graphics.gd" id="1_friuo"]
+[ext_resource type="Script" path="res://src/Menus/Scripts/Options_Graphics.gd" id="1_b5wgn"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_02qbj"]
 bg_color = Color(0.145098, 0.14902, 0.160784, 0.866667)
@@ -26,7 +26,7 @@ events = [SubResource("InputEventKey_1b0p8")]
 offset_right = 1036.0
 offset_bottom = 640.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_02qbj")
-script = ExtResource("1_friuo")
+script = ExtResource("1_b5wgn")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 1

@@ -1,6 +1,6 @@
 extends Control
 
-var options_scene = preload("res://src/Menus/Options.tscn")
+var options_scene = preload("res://src/Menus/Options/Options.tscn")
 
 
 # Called when the node enters the scene tree for the first time.
