@@ -12,8 +12,12 @@ config_version=5
 
 config/name="Project Yorkshire"
 run/main_scene="res://src/Menus/Main Menu.tscn"
-config/features=PackedStringArray("4.0", "Forward Plus")
+config/features=PackedStringArray("4.0", "C#", "Forward Plus")
 config/icon="res://icon.svg"
+
+[dotnet]
+
+project/assembly_name="Project Yorkshire"
 
 [input]
 
